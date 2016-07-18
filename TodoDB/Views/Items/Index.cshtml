@@ -34,7 +34,17 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <a href="#"><span class="glyphicon glyphicon-unchecked"></span></a>
+            <a href="@Url.Action("ToggleDone", new { id=item.ItemID })">
+                @if (item.Done)
+                {
+                    <span class="glyphicon glyphicon-check"></span>
+                }
+                else
+                {
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                }
+                
+            </a>
             @*@Html.DisplayFor(modelItem => item.Done)*@
         </td>
         <td>

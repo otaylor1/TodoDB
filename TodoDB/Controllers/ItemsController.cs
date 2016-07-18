@@ -130,7 +130,7 @@ namespace TodoDB.Controllers
         }
 
 
-        public ActionResult MarkDone(int? id)
+        public ActionResult ToggleDone(int? id)
         {
             if (id == null)
             {
@@ -142,7 +142,14 @@ namespace TodoDB.Controllers
                 return HttpNotFound();
             }
 
-            item.Done = true;
+            if (item.Done)
+            {
+                item.Done = false;
+            }
+            else
+            {
+                item.Done = true;
+            }
 
             db.SaveChanges();
             return RedirectToAction("Index");
