@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TodoDB.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Items</h2>
+
+<p>
+    @Html.ActionLink("Add Item", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Done)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.List.ListTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="#"><span class="glyphicon glyphicon-unchecked"></span></a>
+            @*@Html.DisplayFor(modelItem => item.Done)*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.List.ListTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Details)
+        </td>
+        
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ItemID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ItemID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ItemID })
+        </td>
+    </tr>
+}
+
+</table>
